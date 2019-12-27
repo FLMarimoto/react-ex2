@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 
 class App extends Component {
+  state = {
+    text: ''
+  }
+
+  textChangedHandler = (event) => {
+    this.setState({text: event.target.value});
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>Exercise 2</h1>
+        <input type="text" onChange={(event) => this.textChangedHandler(event)}  value={this.state.text}/>
+        <p>{'You typed ' + this.state.text.length + ' letters'}</p>
       </div>
     );
   }
