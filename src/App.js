@@ -17,6 +17,15 @@ class App extends Component {
     });
   }
 
+  deleteCharHandler = (charIndex) => {
+    const chars = this.state.text.split('');
+    chars.splice(charIndex, 1);
+    this.setState({
+      text: chars.join(''),
+      length: chars.length
+    });
+  }
+
   render() {
     
     let charList = null;
@@ -24,9 +33,10 @@ class App extends Component {
     if (this.state.text.length > 0) {
       charList = (
         <div>
-          {this.state.text.split().map((char, index) => {
+          {this.state.text.split('').map((char, index) => {
             return <CharComponent
-            char = {char}/>
+              click = {() => this.deleteCharHandler(index)}
+              char = {char}/>
           })}
         </div>
       );
